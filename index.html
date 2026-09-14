@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sherlock-Home — Your Server Has Clues.</title>
+    <meta
+      name="description"
+      content="Sherlock-Home monitors your Discord community and turns raw activity into clear, organized PDF reports. Inactivity, joins, and departures — investigated automatically."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ambient layers -->
+    <div class="grain" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- ===================== NAV ===================== -->
+    <header class="nav">
+      <div class="wrap">
+        <a href="#top" class="nav-brand">
+          <img
+            src="https://github.com/almanac-xyz/img-pub/blob/main/IMG_9405.PNG?raw=true"
+            alt="Sherlock-Home inactivity report showing 165 total members, activity breakdown by day-tiers, and detailed member tables"
+          />
+        </a>
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#evidence">Reports</a>
+          <a href="#how">How It Works</a>
+          <a href="#about">About</a>
+        </nav>
+        <div class="nav-cta">
+          <a href="#invite" class="btn btn-primary"><span>Invite Bot</span></a>
+          <button class="nav-toggle" aria-label="Open menu" id="navToggle">
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== SCREENSHOTS — EVIDENCE ===================== -->
+    <section class="evidence" id="evidence">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="title">SHERLOCK‑HOME</h2>
+          <p class="lede">Monitor your Discord community.</p>
+        </div>
+
+        <div class="evidence-item reveal">
+          <div class="evidence-copy">
+            <span class="case-tag"
+              >EXHIBIT A &nbsp;·&nbsp; INACTIVITY REPORT</span
+            >
+            <h3>EVERY QUIET MEMBER, ACCOUNTED FOR</h3>
+            <p>
+              A full breakdown of who's gone quiet, organized into four severity
+              tiers with usernames, display names, and last-seen timestamps.
+            </p>
+            <ul>
+              <li>Total members vs. active / offline percentage</li>
+              <li>Split by +5, +15, +30, and +90 day tiers</li>
+              <li>Exportable, shareable, ready to act on</li>
+            </ul>
+          </div>
+          <div class="evidence-frame">
+            <div class="monitor-top">
+              <span>SH&#8209;SCAN.PDF</span
+              ><span class="rec"><span></span>LIVE CAPTURE</span>
+            </div>
+            <div class="evidence-screen">
+              <img
+                src=""
+                alt="Sherlock-Home inactivity report showing 165 total members, activity breakdown by day-tiers, and detailed member tables"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="evidence-item reverse reveal">
+          <div class="evidence-copy">
+            <span class="case-tag">EXHIBIT B &nbsp;·&nbsp; JOINED MEMBERS</span>
+            <h3>NEW ARRIVALS, LOGGED</h3>
+            <p>
+              Every member who joined during the selected period, with their
+              username, server nickname, and exact join date.
+            </p>
+            <ul>
+              <li>Custom date-range reporting</li>
+              <li>Clear member-by-member table</li>
+              <li>Useful for tracking campaigns and growth</li>
+            </ul>
+          </div>
+          <div class="evidence-frame">
+            <div class="monitor-top">
+              <span>SH&#8209;SCAN.PDF</span
+              ><span class="rec"><span></span>LIVE CAPTURE</span>
+            </div>
+            <div class="evidence-screen">
+              <img
+                src="./report-joined.png"
+                alt="Sherlock-Home joined members report showing total members and a table of members who joined the server during the selected period"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="evidence-item reveal">
+          <div class="evidence-copy">
+            <span class="case-tag">EXHIBIT C &nbsp;·&nbsp; LEFT MEMBERS</span>
+            <h3>DEPARTURES, ON THE RECORD</h3>
+            <p>
+              A complete log of members who left, including when they joined and
+              when they departed — side by side.
+            </p>
+            <ul>
+              <li>Join and leave dates in one row</li>
+              <li>Spot patterns behind member churn</li>
+              <li>Keep staff aligned on what changed</li>
+            </ul>
+          </div>
+          <div class="evidence-frame">
+            <div class="monitor-top">
+              <span>SH&#8209;SCAN.PDF</span
+              ><span class="rec"><span></span>LIVE CAPTURE</span>
+            </div>
+            <div class="evidence-screen">
+              <img
+                src="./report-left.png"
+                alt="Sherlock-Home left members report showing total members and a table of members who left the server, including join and leave dates"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES — CASE FILES ===================== -->
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">WHAT WE INVESTIGATE</span>
+          <h2 class="title">THE CASE FILES</h2>
+          <p class="lede">
+            Three reports. One clear picture of what's happening inside your
+            community.
+          </p>
+        </div>
+
+        <div class="case-files-grid">
+          <article class="case-card reveal">
+            <span class="num">01 / INACTIVITY REPORT</span>
+            <h3>WHO WENT QUIET</h3>
+            <p>
+              Find out who has stopped participating in your server, sorted by
+              how long they've been gone.
+            </p>
+            <div class="tier-list">
+              <div class="tier">
+                <span class="sw green"></span><b>+5 days</b>&nbsp;— recently
+                inactive
+              </div>
+              <div class="tier">
+                <span class="sw blue"></span><b>+15 days</b>&nbsp;— low activity
+              </div>
+              <div class="tier">
+                <span class="sw orange"></span><b>+30 days</b>&nbsp;— inactive
+              </div>
+              <div class="tier">
+                <span class="sw red"></span><b>+90 days</b>&nbsp;— highly
+                inactive
+              </div>
+            </div>
+            <div class="use-tags">
+              <span>Server cleanup</span><span>Re&#8209;engagement</span
+              ><span>Community health</span>
+            </div>
+          </article>
+
+          <article class="case-card reveal">
+            <span class="num">02 / JOINED MEMBERS</span>
+            <h3>WHO ARRIVED</h3>
+            <p>
+              Track who is joining your server and when, so growth never goes
+              unnoticed.
+            </p>
+            <table class="mini-table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Username</th>
+                  <th>Joined</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>R. Byers</td>
+                  <td>@rbyers</td>
+                  <td>09/12</td>
+                </tr>
+                <tr>
+                  <td>J. Hopper</td>
+                  <td>@jhopper</td>
+                  <td>09/13</td>
+                </tr>
+                <tr>
+                  <td>N. Wheeler</td>
+                  <td>@nwheeler</td>
+                  <td>09/14</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="use-tags">
+              <span>Growth tracking</span><span>Onboarding</span>
+            </div>
+          </article>
+
+          <article class="case-card reveal">
+            <span class="num">03 / LEFT MEMBERS</span>
+            <h3>WHO LEFT</h3>
+            <p>
+              Understand who left your server and when, so nothing slips by
+              without record.
+            </p>
+            <table class="mini-table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Username</th>
+                  <th>Left</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>D. Henderson</td>
+                  <td>@dhndrsn</td>
+                  <td>09/10</td>
+                </tr>
+                <tr>
+                  <td>M. Sinclair</td>
+                  <td>@msincl</td>
+                  <td>09/12</td>
+                </tr>
+                <tr>
+                  <td>&mdash;</td>
+                  <td>&mdash;</td>
+                  <td>&mdash;</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="use-tags">
+              <span>Retention</span><span>Trend analysis</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PIPELINE ===================== -->
+    <section>
+      <div class="wrap">
+        <div
+          class="section-head reveal"
+          style="margin-left: auto; margin-right: auto; text-align: center"
+        >
+          <span class="eyebrow" style="justify-content: center"
+            >THE PROCESS</span
+          >
+          <h2 class="title">FROM ACTIVITY<br />TO EVIDENCE</h2>
+          <p class="lede" style="margin-left: auto; margin-right: auto">
+            Raw server noise, distilled into a decision your staff can make.
+          </p>
+        </div>
+
+        <div class="pipeline reveal">
+          <div class="pipe-node">
+            <span class="n-label">DISCORD ACTIVITY</span
+            ><span class="n-code">RAW INPUT</span>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node active">
+            <span class="n-label">SHERLOCK&#8209;HOME</span
+            ><span class="n-code">MONITORING</span>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node">
+            <span class="n-label">DATA ANALYSIS</span
+            ><span class="n-code">PROCESSING</span>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node">
+            <span class="n-label">PDF REPORT</span
+            ><span class="n-code">OUTPUT</span>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node">
+            <span class="n-label">STAFF DECISION</span
+            ><span class="n-code">RESOLVED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PDF SECTION ===================== -->
+    <section class="pdf-section">
+      <div class="wrap">
+        <div class="pdf-copy reveal">
+          <span class="eyebrow">DELIVERY FORMAT</span>
+          <h2 class="title">THE CASE<br />IS READY.</h2>
+          <p class="lede">
+            No spreadsheets. No messy data. Just organized reports ready to
+            analyze, save, or share with your staff.
+          </p>
+          <ul>
+            <li>
+              <span class="ico">&#128196;</span>Clean, printable PDF — no
+              software required to open it
+            </li>
+            <li>
+              <span class="ico">&#128274;</span>Generated privately for your
+              server only
+            </li>
+            <li>
+              <span class="ico">&#128337;</span>Timestamped and ready to archive
+            </li>
+          </ul>
+          <a href="#invite" class="btn btn-primary"
+            >Generate Your First Report</a
+          >
+        </div>
+        <div class="doc-stack reveal">
+          <div class="doc-behind-2"></div>
+          <div class="doc-behind"></div>
+          <div class="doc">
+            <div class="doc-head">
+              <div>
+                <b>SHERLOCK&#8209;HOME</b><br />
+                <span class="conf">CONFIDENTIAL REPORT</span>
+              </div>
+              <span style="font-size: 9px; letter-spacing: 0.08em"
+                >09/14/1986</span
+              >
+            </div>
+            <div class="doc-line w-70"></div>
+            <div class="doc-line w-40"></div>
+            <div style="margin-top: 16px">
+              <div class="doc-line" style="width: 100%"></div>
+              <div class="doc-line" style="width: 85%"></div>
+              <div class="doc-line" style="width: 92%"></div>
+              <div class="doc-line w-40"></div>
+            </div>
+            <div class="doc-stat">
+              <span>SERVER ACTIVITY ANALYSIS</span><span>1,284 MEMBERS</span>
+            </div>
+            <div class="doc-status-ok">&#9679; STATUS: COMPLETE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DAY ZERO ===================== -->
+    <section id="dayzero">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">A NOTE ON HOW THIS WORKS</span>
+          <h2 class="title">THE DAY ZERO</h2>
+          <p class="lede">
+            The investigation starts the moment Sherlock-Home joins your server
+            — not before.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="t-item reveal">
+            <div class="t-day">DAY 0</div>
+            <div class="t-desc">
+              Sherlock-Home arrives and begins observing. The bot can't see
+              activity that happened before it joined — every case starts clean.
+            </div>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-day">DAY 5</div>
+            <div class="t-desc">
+              First reliable inactivity data becomes available. This is the
+              minimum window the system needs to start distinguishing quiet
+              members from active ones.
+            </div>
+            <span class="t-note">MINIMUM DATA THRESHOLD REACHED</span>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-day">DAY 15</div>
+            <div class="t-desc">
+              More activity history accumulates. Reports begin reflecting real
+              behavior patterns rather than early noise.
+            </div>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-day">DAY 30</div>
+            <div class="t-desc">
+              Stronger insights. Enough history has built up to confidently flag
+              long-term inactivity and trends.
+            </div>
+          </div>
+          <div class="t-item reveal">
+            <div class="t-day">DAY 90+</div>
+            <div class="t-desc">
+              Complete long-term picture. This is where Sherlock-Home is most
+              valuable — full visibility across your community's history.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">GETTING STARTED</span>
+          <h2 class="title">HOW IT WORKS</h2>
+          <p class="lede">
+            Three steps between "no idea what's happening" and a finished
+            report.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <span class="num">01</span>
+            <h3>INVITE</h3>
+            <p>
+              Add Sherlock-Home to your Discord server in under a minute. No
+              configuration required to get started.
+            </p>
+            <div class="status"><span></span>READY</div>
+          </div>
+          <div class="step-card reveal">
+            <span class="num">02</span>
+            <h3>OBSERVE</h3>
+            <p>
+              The bot begins monitoring member activity from the moment it
+              joins, quietly building a picture of your server.
+            </p>
+            <div class="status"><span></span>MONITORING</div>
+          </div>
+          <div class="step-card reveal">
+            <span class="num">03</span>
+            <h3>REPORT</h3>
+            <p>
+              Generate organized PDF reports whenever you need them —
+              inactivity, joins, or departures.
+            </p>
+            <div class="status"><span></span>ON DEMAND</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHY ===================== -->
+    <section class="why">
+      <div class="wrap">
+        <div class="why-grid">
+          <div class="reveal">
+            <span class="eyebrow">THE CASE FOR SHERLOCK&#8209;HOME</span>
+            <h2 class="title">STOP GUESSING.<br />START<br />INVESTIGATING.</h2>
+            <p class="lede">
+              Managing a community shouldn't mean manually checking hundreds —
+              or thousands — of members by hand.
+            </p>
+          </div>
+          <div class="why-list reveal">
+            <div class="why-row">
+              <span class="idx">01</span>
+              <div class="txt">
+                <b>Understand activity</b
+                ><span
+                  >See who's actually engaging with your server, at a
+                  glance.</span
+                >
+              </div>
+            </div>
+            <div class="why-row">
+              <span class="idx">02</span>
+              <div class="txt">
+                <b>Identify inactive members</b
+                ><span
+                  >Sort quiet members into clear severity tiers
+                  automatically.</span
+                >
+              </div>
+            </div>
+            <div class="why-row">
+              <span class="idx">03</span>
+              <div class="txt">
+                <b>Monitor new members</b
+                ><span>Never miss who's joining, or when.</span>
+              </div>
+            </div>
+            <div class="why-row">
+              <span class="idx">04</span>
+              <div class="txt">
+                <b>Understand departures</b
+                ><span>Know who left and spot patterns behind the churn.</span>
+              </div>
+            </div>
+            <div class="why-row">
+              <span class="idx">05</span>
+              <div class="txt">
+                <b>Plan with confidence</b
+                ><span
+                  >Organize cleanups and re&#8209;engagement campaigns backed by
+                  real data.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="cta-final" id="invite">
+      <div class="wrap">
+        <span class="case-tag"
+          >CASE #1986&#8209;042 &nbsp;·&nbsp; STATUS: OPEN</span
+        >
+        <h2 class="title">READY TO OPEN<br />THE CASE?</h2>
+        <p class="lede">
+          Give your staff the information they need to understand what's
+          happening inside your server.
+        </p>
+        <div class="cta-actions">
+          <a href="#" class="btn btn-primary">Invite Sherlock-Home</a>
+          <a href="#evidence" class="btn btn-ghost">View Reports</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="wrap">
+        <div class="footer-top">
+          <div>
+            <div class="footer-brand">
+              <span class="dot"></span>SHERLOCK&#8209;HOME
+            </div>
+            <div class="footer-status">
+              SYSTEM ONLINE &nbsp;·&nbsp; ALL SCANS OPERATIONAL
+            </div>
+          </div>
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h4>Product</h4>
+              <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#evidence">Reports</a></li>
+                <li><a href="#how">How It Works</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Resources</h4>
+              <ul>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">GitHub</a></li>
+                <li><a href="#">Support</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Connect</h4>
+              <ul>
+                <li><a href="#">Discord</a></li>
+                <li><a href="#invite">Invite Bot</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 SHERLOCK&#8209;HOME. All rights reserved.</span>
+          <span class="term"
+            >STATUS: <b>ONLINE</b> &nbsp;//&nbsp; LAST SCAN:
+            <span id="footerTime">23:48:17</span></span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

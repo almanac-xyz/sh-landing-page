@@ -3,54 +3,189 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f5f7" />
     <title>Sherlock-Home — Your Server Has Clues.</title>
     <meta
+      fon
       name="description"
       content="Sherlock-Home monitors your Discord community and turns raw activity into clear, organized PDF reports. Inactivity, joins, and departures — investigated automatically."
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script>
+      /* Aplica o tema antes da primeira pintura (evita flash). Mantenha a chave em sincronia com script.js */
+      (function () {
+        var t = null;
+        try {
+          t = localStorage.getItem("sh-theme");
+        } catch (e) {}
+        if (t !== "light" && t !== "dark") {
+          t =
+            window.matchMedia &&
+            matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
   </head>
   <body>
-    <!-- ambient layers -->
-    <div class="grain" aria-hidden="true"></div>
-    <div class="scanlines" aria-hidden="true"></div>
-    <div class="vignette" aria-hidden="true"></div>
+    <!-- ===================== AURORA BACKGROUND ===================== -->
+    <div class="aurora" aria-hidden="true">
+      <span class="aurora-blob b1"></span>
+      <span class="aurora-blob b2"></span>
+      <span class="aurora-blob b3"></span>
+      <span class="aurora-blob b4"></span>
+      <span class="aurora-blob b5"></span>
+    </div>
 
-    <!-- ===================== NAV ===================== -->
+    <!-- ===================== NAV — floating liquid glass ===================== -->
     <header class="nav">
-      <div class="wrap">
-        <a href="#top" class="nav-brand">
+      <div class="nav-pill glass-premium">
+        <a href="#top" class="nav-brand" aria-label="Sherlock-Home">
           <img
-            src="https://github.com/almanac-xyz/img-pub/blob/main/IMG_9405.PNG?raw=true"
-            alt="Sherlock-Home inactivity report showing 165 total members, activity breakdown by day-tiers, and detailed member tables"
+            src="./img//logo-nav.png"
+            alt="Sherlock-Home"
+            width="36"
+            height="36"
           />
         </a>
-        <nav class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#evidence">Reports</a>
-          <a href="#how">How It Works</a>
-          <a href="#about">About</a>
+        <nav class="nav-links" aria-label="Main">
+          <span class="nav-indicator" aria-hidden="true"></span>
+          <a href="#evidence">
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"
+              />
+              <path d="M14 3v5h5M9 13h6M9 17h6" />
+            </svg>
+            <span class="nav-label">Main</span>
+          </a>
         </nav>
-        <div class="nav-cta">
-          <a href="#invite" class="btn btn-primary"><span>Invite Bot</span></a>
-          <button class="nav-toggle" aria-label="Open menu" id="navToggle">
-            ☰
+
+        <div class="nav-about">
+          <button
+            class="nav-about-trigger"
+            id="aboutTrigger"
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="aboutDropdown"
+          >
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M10 8.5v7l5.5-3.5z" />
+            </svg>
+            <span class="nav-label">About</span>
+            <svg class="nav-caret" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
           </button>
+          <div
+            class="about-dropdown glass-premium"
+            id="aboutDropdown"
+            role="menu"
+            aria-label="About Sherlock-Home"
+          >
+            <a role="menuitem" href="#case-files">
+              <span class="dd-title">The Case Files</span>
+              <span class="dd-desc">Inactivity, joins &amp; departures</span>
+            </a>
+            <a role="menuitem" href="#activity-evidence">
+              <span class="dd-title">From Activity to Evidence</span>
+              <span class="dd-desc">How raw activity becomes a report</span>
+            </a>
+            <a role="menuitem" href="#dayzero">
+              <span class="dd-title">The Day Zero</span>
+              <span class="dd-desc">When tracking begins</span>
+            </a>
+            <a role="menuitem" href="#how-it-works">
+              <span class="dd-title">How It Works</span>
+              <span class="dd-desc">Invite, observe, report</span>
+            </a>
+          </div>
         </div>
+
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch to dark theme"
+          title="Switch to dark theme"
+        >
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"
+            />
+          </svg>
+        </button>
+        <a
+          href="https://discord.com/oauth2/authorize?client_id=1541966279361957929&permissions=8&integration_type=0&scope=bot+applications.commands"
+          class="btn btn-primary"
+        >
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1" />
+            <circle cx="9" cy="8" r="3.5" />
+            <path d="M19 8v6M16 11h6" />
+          </svg>
+          <span class="nav-label">Invite Bot</span>
+        </a>
       </div>
     </header>
 
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="top">
+      <div class="wrap hero-wrap">
+        <div class="hero-copy">
+          <span class="hero-badge glass-subtle reveal"
+            ><span class="dot dot-green"></span>System Online</span
+          >
+          <h1 class="hero-title reveal">SHERLOCK&#8209;HOME</h1>
+          <p class="hero-lede reveal">Monitor your Discord community.</p>
+          <div class="hero-actions reveal">
+            <a
+              href="https://discord.com/oauth2/authorize?client_id=1541966279361957929&permissions=8&integration_type=0&scope=bot+applications.commands"
+              class="btn btn-primary btn-lg"
+              >Invite Bot</a
+            >
+            <a href="#evidence" class="btn btn-glass btn-lg">View Reports</a>
+          </div>
+        </div>
+
+        <div class="hero-visual glass-premium reveal" aria-hidden="true">
+          <div class="hero-visual-row">
+            <span class="dot dot-green"></span>Scan <b>Complete</b>
+          </div>
+          <div class="hero-visual-row">
+            <span class="dot dot-teal"></span>Activity AI <b>Enabled</b>
+          </div>
+          <div class="hero-visual-row">
+            <span class="dot dot-blue"></span>Data Sync <b>OK</b>
+          </div>
+          <div class="hero-visual-row hero-visual-version">
+            <span class="dot dot-amber"></span>Version <b>1.0</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== SCREENSHOTS — EVIDENCE ===================== -->
-    <section class="evidence" id="evidence">
+    <section id="evidence">
       <div class="wrap">
         <div class="section-head reveal">
-          <h2 class="title">SHERLOCK‑HOME</h2>
-          <p class="lede">Monitor your Discord community.</p>
+          <span class="eyebrow">EXHIBIT A &ndash; C</span>
+          <h2 class="title">THE EVIDENCE</h2>
+          <p class="lede">Real reports generated by Sherlock&#8209;Home.</p>
         </div>
 
         <div class="evidence-item reveal">
           <div class="evidence-copy">
-            <span class="case-tag"
+            <span class="case-tag glass-subtle"
               >EXHIBIT A &nbsp;·&nbsp; INACTIVITY REPORT</span
             >
             <h3>EVERY QUIET MEMBER, ACCOUNTED FOR</h3>
@@ -64,14 +199,14 @@
               <li>Exportable, shareable, ready to act on</li>
             </ul>
           </div>
-          <div class="evidence-frame">
+          <div class="evidence-frame glass-standard">
             <div class="monitor-top">
               <span>SH&#8209;SCAN.PDF</span
               ><span class="rec"><span></span>LIVE CAPTURE</span>
             </div>
             <div class="evidence-screen">
               <img
-                src=""
+                src="./img/report-inactivity.png"
                 alt="Sherlock-Home inactivity report showing 165 total members, activity breakdown by day-tiers, and detailed member tables"
               />
             </div>
@@ -80,7 +215,9 @@
 
         <div class="evidence-item reverse reveal">
           <div class="evidence-copy">
-            <span class="case-tag">EXHIBIT B &nbsp;·&nbsp; JOINED MEMBERS</span>
+            <span class="case-tag glass-subtle"
+              >EXHIBIT B &nbsp;·&nbsp; JOINED MEMBERS</span
+            >
             <h3>NEW ARRIVALS, LOGGED</h3>
             <p>
               Every member who joined during the selected period, with their
@@ -92,14 +229,14 @@
               <li>Useful for tracking campaigns and growth</li>
             </ul>
           </div>
-          <div class="evidence-frame">
+          <div class="evidence-frame glass-standard">
             <div class="monitor-top">
               <span>SH&#8209;SCAN.PDF</span
               ><span class="rec"><span></span>LIVE CAPTURE</span>
             </div>
             <div class="evidence-screen">
               <img
-                src="./report-joined.png"
+                src="./img/report-joined.png"
                 alt="Sherlock-Home joined members report showing total members and a table of members who joined the server during the selected period"
               />
             </div>
@@ -108,7 +245,9 @@
 
         <div class="evidence-item reveal">
           <div class="evidence-copy">
-            <span class="case-tag">EXHIBIT C &nbsp;·&nbsp; LEFT MEMBERS</span>
+            <span class="case-tag glass-subtle"
+              >EXHIBIT C &nbsp;·&nbsp; LEFT MEMBERS</span
+            >
             <h3>DEPARTURES, ON THE RECORD</h3>
             <p>
               A complete log of members who left, including when they joined and
@@ -120,14 +259,14 @@
               <li>Keep staff aligned on what changed</li>
             </ul>
           </div>
-          <div class="evidence-frame">
+          <div class="evidence-frame glass-standard">
             <div class="monitor-top">
               <span>SH&#8209;SCAN.PDF</span
               ><span class="rec"><span></span>LIVE CAPTURE</span>
             </div>
             <div class="evidence-screen">
               <img
-                src="./report-left.png"
+                src="./img/report-left.png"
                 alt="Sherlock-Home left members report showing total members and a table of members who left the server, including join and leave dates"
               />
             </div>
@@ -137,7 +276,7 @@
     </section>
 
     <!-- ===================== FEATURES — CASE FILES ===================== -->
-    <section id="features">
+    <section id="case-files">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="eyebrow">WHAT WE INVESTIGATE</span>
@@ -149,7 +288,7 @@
         </div>
 
         <div class="case-files-grid">
-          <article class="case-card reveal">
+          <article class="case-card glass-standard reveal">
             <span class="num">01 / INACTIVITY REPORT</span>
             <h3>WHO WENT QUIET</h3>
             <p>
@@ -178,7 +317,7 @@
             </div>
           </article>
 
-          <article class="case-card reveal">
+          <article class="case-card glass-standard reveal">
             <span class="num">02 / JOINED MEMBERS</span>
             <h3>WHO ARRIVED</h3>
             <p>
@@ -216,7 +355,7 @@
             </div>
           </article>
 
-          <article class="case-card reveal">
+          <article class="case-card glass-standard reveal">
             <span class="num">03 / LEFT MEMBERS</span>
             <h3>WHO LEFT</h3>
             <p>
@@ -258,7 +397,7 @@
     </section>
 
     <!-- ===================== PIPELINE ===================== -->
-    <section>
+    <section id="activity-evidence">
       <div class="wrap">
         <div
           class="section-head reveal"
@@ -274,86 +413,29 @@
         </div>
 
         <div class="pipeline reveal">
-          <div class="pipe-node">
+          <div class="pipe-node glass-standard">
             <span class="n-label">DISCORD ACTIVITY</span
             ><span class="n-code">RAW INPUT</span>
           </div>
           <div class="pipe-connector"></div>
-          <div class="pipe-node active">
+          <div class="pipe-node glass-standard active">
             <span class="n-label">SHERLOCK&#8209;HOME</span
             ><span class="n-code">MONITORING</span>
           </div>
           <div class="pipe-connector"></div>
-          <div class="pipe-node">
+          <div class="pipe-node glass-standard">
             <span class="n-label">DATA ANALYSIS</span
             ><span class="n-code">PROCESSING</span>
           </div>
           <div class="pipe-connector"></div>
-          <div class="pipe-node">
+          <div class="pipe-node glass-standard">
             <span class="n-label">PDF REPORT</span
             ><span class="n-code">OUTPUT</span>
           </div>
           <div class="pipe-connector"></div>
-          <div class="pipe-node">
+          <div class="pipe-node glass-standard">
             <span class="n-label">STAFF DECISION</span
             ><span class="n-code">RESOLVED</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== PDF SECTION ===================== -->
-    <section class="pdf-section">
-      <div class="wrap">
-        <div class="pdf-copy reveal">
-          <span class="eyebrow">DELIVERY FORMAT</span>
-          <h2 class="title">THE CASE<br />IS READY.</h2>
-          <p class="lede">
-            No spreadsheets. No messy data. Just organized reports ready to
-            analyze, save, or share with your staff.
-          </p>
-          <ul>
-            <li>
-              <span class="ico">&#128196;</span>Clean, printable PDF — no
-              software required to open it
-            </li>
-            <li>
-              <span class="ico">&#128274;</span>Generated privately for your
-              server only
-            </li>
-            <li>
-              <span class="ico">&#128337;</span>Timestamped and ready to archive
-            </li>
-          </ul>
-          <a href="#invite" class="btn btn-primary"
-            >Generate Your First Report</a
-          >
-        </div>
-        <div class="doc-stack reveal">
-          <div class="doc-behind-2"></div>
-          <div class="doc-behind"></div>
-          <div class="doc">
-            <div class="doc-head">
-              <div>
-                <b>SHERLOCK&#8209;HOME</b><br />
-                <span class="conf">CONFIDENTIAL REPORT</span>
-              </div>
-              <span style="font-size: 9px; letter-spacing: 0.08em"
-                >09/14/1986</span
-              >
-            </div>
-            <div class="doc-line w-70"></div>
-            <div class="doc-line w-40"></div>
-            <div style="margin-top: 16px">
-              <div class="doc-line" style="width: 100%"></div>
-              <div class="doc-line" style="width: 85%"></div>
-              <div class="doc-line" style="width: 92%"></div>
-              <div class="doc-line w-40"></div>
-            </div>
-            <div class="doc-stat">
-              <span>SERVER ACTIVITY ANALYSIS</span><span>1,284 MEMBERS</span>
-            </div>
-            <div class="doc-status-ok">&#9679; STATUS: COMPLETE</div>
           </div>
         </div>
       </div>
@@ -386,7 +468,9 @@
               minimum window the system needs to start distinguishing quiet
               members from active ones.
             </div>
-            <span class="t-note">MINIMUM DATA THRESHOLD REACHED</span>
+            <span class="t-note glass-subtle"
+              >MINIMUM DATA THRESHOLD REACHED</span
+            >
           </div>
           <div class="t-item reveal">
             <div class="t-day">DAY 15</div>
@@ -414,7 +498,7 @@
     </section>
 
     <!-- ===================== HOW IT WORKS ===================== -->
-    <section id="how">
+    <section id="how-it-works">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="eyebrow">GETTING STARTED</span>
@@ -426,7 +510,7 @@
         </div>
 
         <div class="steps-grid">
-          <div class="step-card reveal">
+          <div class="step-card glass-standard reveal">
             <span class="num">01</span>
             <h3>INVITE</h3>
             <p>
@@ -435,7 +519,7 @@
             </p>
             <div class="status"><span></span>READY</div>
           </div>
-          <div class="step-card reveal">
+          <div class="step-card glass-standard reveal">
             <span class="num">02</span>
             <h3>OBSERVE</h3>
             <p>
@@ -444,7 +528,7 @@
             </p>
             <div class="status"><span></span>MONITORING</div>
           </div>
-          <div class="step-card reveal">
+          <div class="step-card glass-standard reveal">
             <span class="num">03</span>
             <h3>REPORT</h3>
             <p>
@@ -457,82 +541,26 @@
       </div>
     </section>
 
-    <!-- ===================== WHY ===================== -->
-    <section class="why">
-      <div class="wrap">
-        <div class="why-grid">
-          <div class="reveal">
-            <span class="eyebrow">THE CASE FOR SHERLOCK&#8209;HOME</span>
-            <h2 class="title">STOP GUESSING.<br />START<br />INVESTIGATING.</h2>
-            <p class="lede">
-              Managing a community shouldn't mean manually checking hundreds —
-              or thousands — of members by hand.
-            </p>
-          </div>
-          <div class="why-list reveal">
-            <div class="why-row">
-              <span class="idx">01</span>
-              <div class="txt">
-                <b>Understand activity</b
-                ><span
-                  >See who's actually engaging with your server, at a
-                  glance.</span
-                >
-              </div>
-            </div>
-            <div class="why-row">
-              <span class="idx">02</span>
-              <div class="txt">
-                <b>Identify inactive members</b
-                ><span
-                  >Sort quiet members into clear severity tiers
-                  automatically.</span
-                >
-              </div>
-            </div>
-            <div class="why-row">
-              <span class="idx">03</span>
-              <div class="txt">
-                <b>Monitor new members</b
-                ><span>Never miss who's joining, or when.</span>
-              </div>
-            </div>
-            <div class="why-row">
-              <span class="idx">04</span>
-              <div class="txt">
-                <b>Understand departures</b
-                ><span>Know who left and spot patterns behind the churn.</span>
-              </div>
-            </div>
-            <div class="why-row">
-              <span class="idx">05</span>
-              <div class="txt">
-                <b>Plan with confidence</b
-                ><span
-                  >Organize cleanups and re&#8209;engagement campaigns backed by
-                  real data.</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===================== FINAL CTA ===================== -->
     <section class="cta-final" id="invite">
       <div class="wrap">
-        <span class="case-tag"
-          >CASE #1986&#8209;042 &nbsp;·&nbsp; STATUS: OPEN</span
-        >
-        <h2 class="title">READY TO OPEN<br />THE CASE?</h2>
-        <p class="lede">
-          Give your staff the information they need to understand what's
-          happening inside your server.
-        </p>
-        <div class="cta-actions">
-          <a href="#" class="btn btn-primary">Invite Sherlock-Home</a>
-          <a href="#evidence" class="btn btn-ghost">View Reports</a>
+        <div class="cta-panel glass-premium reveal">
+          <span class="case-tag glass-subtle"
+            >CASE #1986&#8209;042 &nbsp;·&nbsp; STATUS: OPEN</span
+          >
+          <h2 class="title">READY TO OPEN<br />THE CASE?</h2>
+          <p class="lede">
+            Give your staff the information they need to understand what's
+            happening inside your server.
+          </p>
+          <div class="cta-actions">
+            <a
+              href="https://discord.com/oauth2/authorize?client_id=1541966279361957929&permissions=8&integration_type=0&scope=bot+applications.commands"
+              class="btn btn-primary btn-lg"
+              >Invite Sherlock-Home</a
+            >
+            <a href="#evidence" class="btn btn-ghost btn-lg">View Reports</a>
+          </div>
         </div>
       </div>
     </section>
@@ -543,7 +571,7 @@
         <div class="footer-top">
           <div>
             <div class="footer-brand">
-              <span class="dot"></span>SHERLOCK&#8209;HOME
+              <span class="dot dot-green"></span>SHERLOCK&#8209;HOME
             </div>
             <div class="footer-status">
               SYSTEM ONLINE &nbsp;·&nbsp; ALL SCANS OPERATIONAL
@@ -553,9 +581,9 @@
             <div class="footer-col">
               <h4>Product</h4>
               <ul>
-                <li><a href="#features">Features</a></li>
+                <li><a href="#case-files">Features</a></li>
                 <li><a href="#evidence">Reports</a></li>
-                <li><a href="#how">How It Works</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
               </ul>
             </div>
             <div class="footer-col">
@@ -569,8 +597,18 @@
             <div class="footer-col">
               <h4>Connect</h4>
               <ul>
-                <li><a href="#">Discord</a></li>
-                <li><a href="#invite">Invite Bot</a></li>
+                <li>
+                  <a
+                    href="https://discord.com/oauth2/authorize?client_id=1541966279361957929&permissions=8&integration_type=0&scope=bot+applications.commands"
+                    >Discord</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://discord.com/oauth2/authorize?client_id=1541966279361957929&permissions=8&integration_type=0&scope=bot+applications.commands"
+                    >Invite Bot</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -585,6 +623,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
